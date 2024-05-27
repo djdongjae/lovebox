@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import loveboxapp.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', loveboxapp.views.index, name = 'index'),
+    path('new/', loveboxapp.views.new, name='new'),
+    path('new/create/', loveboxapp.views.create, name='create'),
+    path('result/', loveboxapp.views.result, name='result')
 ]

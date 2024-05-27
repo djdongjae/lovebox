@@ -35,6 +35,7 @@ def get_secret(setting, secrets = secrets):
         raise ImproperlyConfigured(error_msg)
 
 SECRET_KEY = get_secret("SECRET_KEY")
+OPEN_AI_KEY = get_secret("OPEN_AI_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

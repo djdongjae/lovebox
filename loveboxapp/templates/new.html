@@ -1,0 +1,129 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>New</title>
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to bottom, rgba(255, 129, 86, 0.8), rgba(255, 119, 119, 0.8)); /* 배경 그라데이션에 투명도 추가 */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+    .form-container {
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        height: 100vh; /* 컨테이너가 위 아래를 꽉 채우도록 설정 */
+        margin: auto;
+        background: linear-gradient(to bottom, #FF8156, #FF7777);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h5 {
+        margin-bottom: 10px;
+        color: black;
+        text-align: left;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-check {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .form-check-label {
+        margin-left: 10px;
+        color: black;
+    }
+    .form-control {
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="form-container">
+    <h1>🎁 LoveBox!</h1>
+    <hr>
+    <form method="POST" action="{% url 'create' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <h5>1. 연인의 성별은 어떻게 되나요?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sex" id="inlineRadio1" value="남성">
+                <label class="form-check-label" for="inlineRadio1">남성</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sex" id="inlineRadio2" value="여성">
+                <label class="form-check-label" for="inlineRadio2">여성</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>2. 연인의 MBTI가 무엇인가요?</h5>
+            <select class="form-control form-control-sm" name="mbti">
+                <option selected>MBTI</option>
+                <option value="ISFJ">ISFJ</option>
+                <option value="ISFP">ISFP</option>
+                <option value="ISTJ">ISTJ</option>
+                <option value="ISTP">ISTP</option>
+            </select>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>3. 예상 선물 가격대는?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="price" id="inlineRadio3" value="30">
+                <label class="form-check-label" for="inlineRadio3">3만원 이하</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="price" id="inlineRadio4" value="50">
+                <label class="form-check-label" for="inlineRadio4">5만원 이하</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="price" id="inlineRadio5" value="100">
+                <label class="form-check-label" for="inlineRadio5">10만원 이상</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>4. 연인이 선호하는 패션 스타일은?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="fashion_style" id="inlineRadio6" value="캐주얼">
+                <label class="form-check-label" for="inlineRadio6">캐주얼</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="fashion_style" id="inlineRadio7" value="단정한">
+                <label class="form-check-label" for="inlineRadio7">단정한</label>
+            </div>
+        </div>
+        <button type="submit">제출</button>
+    </form>
+</div>
+{% endblock %}
