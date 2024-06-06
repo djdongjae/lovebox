@@ -8,24 +8,25 @@
 <style>
     body {
         /*background: linear-gradient(to bottom, rgba(255, 129, 86, 0.8), rgba(255, 119, 119, 0.8)); /* 배경 그라데이션에 투명도 추가 */
+        background-size: cover;
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        /*height: 100vh;*/
         text-align: center;
     }
     .form-container {
         padding: 20px;
         width: 100%;
         max-width: 400px;
-        height: 100vh; /* 컨테이너가 위 아래를 꽉 채우도록 설정 */
         margin: auto;
         background: linear-gradient(to bottom, #FF8156, #FF7777);
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
     }
     h1, h5 {
         margin-bottom: 10px;
@@ -93,6 +94,18 @@
                 <option value="ISFP">ISFP</option>
                 <option value="ISTJ">ISTJ</option>
                 <option value="ISTP">ISTP</option>
+                <option value="INFJ">INFJ</option>
+                <option value="INFP">INFP</option>
+                <option value="INTJ">INTJ</option>
+                <option value="INTP">INTP</option>
+                <option value="ESFJ">ESFJ</option>
+                <option value="ESFP">ESFP</option>
+                <option value="ESTJ">ESTJ</option>
+                <option value="ESTP">ESTP</option>
+                <option value="ENFJ">ENFJ</option>
+                <option value="ENFP">ENFP</option>
+                <option value="ENTJ">ENTJ</option>
+                <option value="ENTP">ENTP</option>
             </select>
         </div>
         <hr>
@@ -100,15 +113,15 @@
             <h5>3. 예상 선물 가격대는?</h5>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="price" id="inlineRadio3" value="30" required>
-                <label class="form-check-label" for="inlineRadio3">3만원 이하</label>
+                <label class="form-check-label" for="inlineRadio3">3만원대</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="price" id="inlineRadio4" value="50" required>
-                <label class="form-check-label" for="inlineRadio4">5만원 이하</label>
+                <label class="form-check-label" for="inlineRadio4">5만원대</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="price" id="inlineRadio5" value="100" required>
-                <label class="form-check-label" for="inlineRadio5">10만원 이상</label>
+                <label class="form-check-label" for="inlineRadio5">10만원대</label>
             </div>
         </div>
         <hr>
@@ -123,6 +136,179 @@
                 <label class="form-check-label" for="inlineRadio7">단정한</label>
             </div>
         </div>
+        <hr>
+        <div class="form-group">
+            <h5>5. 연인의 취미는 어떤 부류인가요?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="hobby" id="inlineRadio8" value="정적인" required>
+                <label class="form-check-label" for="inlineRadio8">정적인</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="hobby" id="inlineRadio9" value="동적인" required>
+                <label class="form-check-label" for="inlineRadio9">동적인</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>6. 연인이 좋아하는 색깔은?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="color" id="inlineRadio10" value="검은색" required>
+                <label class="form-check-label" for="inlineRadio10">검은색</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="color" id="inlineRadio11" value="흰색" required>
+                <label class="form-check-label" for="inlineRadio11">흰색</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>7. 연인이 좋아하는 음식은?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="food" id="inlineRadio12" value="자극적인" required>
+                <label class="form-check-label" for="inlineRadio12">자극적인</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="food" id="inlineRadio13" value="담백한" required>
+                <label class="form-check-label" for="inlineRadio13">담백한</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>8. 연인의 정치 성향은?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="character" id="inlineRadio14" value="진보적" required>
+                <label class="form-check-label" for="inlineRadio14">진보적</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="character" id="inlineRadio15" value="보수적" required>
+                <label class="form-check-label" for="inlineRadio15">보수적</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>9. 연인의 행복 모먼트는?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="laugh_cause" id="inlineRadio16" value="성공적인 경험이나 성취" required>
+                <label class="form-check-label" for="inlineRadio16">성공적인 경험이나 성취</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="laugh_cause" id="inlineRadio17" value="주변 사람들과의 유쾌한 소통" required>
+                <label class="form-check-label" for="inlineRadio17">주변 사람들과의 유쾌한 소통</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>10. 새로운 경험을 할 때 보이는 반응</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="reaction_to_new_experience" id="inlineRadio18" value="흥분하고 호기심을 갖음" required>
+                <label class="form-check-label" for="inlineRadio18">흥분하고 호기심을 갖음</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="reaction_to_new_experience" id="inlineRadio19" value="조금 불안해하거나 주의 깊게 생각함" required>
+                <label class="form-check-label" for="inlineRadio19">조금 불안해하거나 주의 깊게 생각함</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>11. 좋아하는 음악 스타일은 무엇인가요?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="music_style" id="inlineRadio20" value="록" required>
+                <label class="form-check-label" for="inlineRadio20">록</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="music_style" id="inlineRadio21" value="힙합" required>
+                <label class="form-check-label" for="inlineRadio21">힙합</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="music_style" id="inlineRadio22" value="EDM" required>
+                <label class="form-check-label" for="inlineRadio22">EDM</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="music_style" id="inlineRadio23" value="팝" required>
+                <label class="form-check-label" for="inlineRadio23">팝</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="music_style" id="inlineRadio24" value="R&B" required>
+                <label class="form-check-label" for="inlineRadio24">R&B</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="music_style" id="inlineRadio25" value="재즈" required>
+                <label class="form-check-label" for="inlineRadio25">재즈</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>12. 연인이 좋아하는 날씨는 어떤가요?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="weather" id="inlineRadio26" value="따뜻한 날씨와 봄 또는 여름" required>
+                <label class="form-check-label" for="inlineRadio26">따뜻한 날씨와 봄 또는 여름</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="weather" id="inlineRadio27" value="쌀쌀한 날씨와 가을 또는 겨울" required>
+                <label class="form-check-label" for="inlineRadio27">쌀쌀한 날씨와 가을 또는 겨울</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>13. 연인의 SNS 사용 빈도는?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sns_style" id="inlineRadio28" value="새로운 트렌드를 따라가는 것을 즐김" required>
+                <label class="form-check-label" for="inlineRadio28">새로운 트렌드를 따라가는 것을 즐김(릴스 중독...)</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sns_style" id="inlineRadio29" value="SNS를 하지 않거나 정량적으로 사용함" required>
+                <label class="form-check-label" for="inlineRadio29">SNS를 하지 않거나 정량적으로 사용함</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>14. 연인은 어떤 여행을 선호하나요?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="travel" id="inlineRadio30" value="새로운 도시나 국가를 탐험하는 것을 즐김" required>
+                <label class="form-check-label" for="inlineRadio30">새로운 도시나 국가를 탐험하는 것을 즐김</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="travel" id="inlineRadio31" value="여유롭게 휴양지에서 휴식을 취하는 것을 선호" required>
+                <label class="form-check-label" for="inlineRadio31">여유롭게 휴양지에서 휴식을 취하는 것을 선호</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>15. 선호하는 장르는 무엇인가요?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="movie_genre" id="inlineRadio32" value="액션, 스릴러, 공상 과학" required>
+                <label class="form-check-label" for="inlineRadio32">액션, 스릴러, 공상 과학</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="movie_genre" id="inlineRadio33" value="로맨스, 코미디, 드라마" required>
+                <label class="form-check-label" for="inlineRadio33">로맨스, 코미디, 드라마</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>16. 강아지 vs 고양이</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="cat_or_dog" id="inlineRadio34" value="강아지" required>
+                <label class="form-check-label" for="inlineRadio34">강아지</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="cat_or_dog" id="inlineRadio35" value="고양이" required>
+                <label class="form-check-label" for="inlineRadio35">고양이</label>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <h5>17. 연인의 중요한 가치관은 무엇인가요?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="value" id="inlineRadio36" value="돈과 명예" required>
+                <label class="form-check-label" for="inlineRadio36">돈과 명예</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="value" id="inlineRadio37" value="행복" required>
+                <label class="form-check-label" for="inlineRadio37">행복</label>
+            </div>
+        </div>
+        <br>
         <button type="submit">제출</button>
     </form>    
 </div>
