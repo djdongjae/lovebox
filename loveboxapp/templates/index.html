@@ -14,39 +14,40 @@
     <title>index</title>
     {% endblock %}
     <style>
-        /* Custom CSS for styling */
-        body {
-            background: linear-gradient(to bottom, rgba(255, 129, 86, 0.8), rgba(255, 119, 119, 0.8));
-            /* 배경 그라데이션에 투명도 추가 */
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
+        }
+
+        body {
+            /*background: linear-gradient(to bottom, rgba(255, 129, 86, 0.8), rgba(255, 119, 119, 0.8));*/
+            /*display: flex;*/
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
             text-align: center;
+            margin: 0px;
         }
 
         .container {
             padding: 20px;
-            width: 100%;
+            width: 90%;
             max-width: 400px;
-            height: 100vh;
-            /* 컨테이너가 위 아래를 꽉 채우도록 설정 */
-            margin: auto;
             background: linear-gradient(to bottom, #FF8156, #FF7777);
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            height: 100%;
+            box-sizing: border-box;
         }
 
         .lovebox-title {
             margin-bottom: 20px;
             color: black;
-            /* 타이틀 색상 */
         }
 
         .start-button {
@@ -56,9 +57,7 @@
             margin-top: 20px;
             margin-bottom: 10px;
             background-color: #007bff;
-            /* 버튼 배경색 */
             color: #fff;
-            /* 버튼 텍스트 색상 */
             text-decoration: none;
             font-size: 18px;
             border-radius: 5px;
@@ -67,16 +66,47 @@
 
         .start-button:hover {
             background-color: #0056b3;
-            /* 호버 시 배경색 변경 */
+        }
+
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 10px 0;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .item h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .item p {
+            margin: 5px 0;
         }
     </style>
 </head>
 
-<body>
+<body style="margin: 0px;">
     {% block content %}
     <div class="container">
         <div>
-            <h1 class="lovebox-title">🎁 LoveBox!</h1>
+            <h1 class="lovebox-title">🎁 LoveBox! 🎁</h1>
             내 연인은 어떤 선물을 받고 싶을까?
             <a href="{% url 'new' %}" class="start-button">시작하기</a>
         </div>

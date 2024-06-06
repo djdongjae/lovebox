@@ -3,8 +3,12 @@ from django.utils import timezone
 from .models import Form
 import openai
 from django.conf import settings
+import requests
 
-openai.api_key = settings.OPEN_AI_KEY
+openai.api_key = settings.OPENAI_API_KEY
+naver_shopping_api_URL = settings.NAVER_SHOPPING_API_URL
+naver_shopping_api_client_id = settings.NAVER_SHOPPING_API_CLIENT_ID
+naver_shopping_api_client_secret = settings.NAVER_SHOPPING_API_CLIENT_SECRET
 
 # Create your views here.
 def index(request):
@@ -71,5 +75,14 @@ def result(request):
     
     return render(request, 'result.html', {'item': item, 'description': description})
 
-# def shopping(request):
+def shopping(request):
+    query = request.GET.get("item")
+    url = naver_shopping_api_URL + "?query=" + query
+    response = requests.get(url, headers={
+        "X-Naver-Client-Id": naver_shopping_api_client_id, 
+        "X-Naver-Client-Secret": naver_shopping_api_client_secret
+    })
+    items = response.json().get('items', [])
+    return render(request, 'shopping.html', {'items': items})
+
     

@@ -35,7 +35,10 @@ def get_secret(setting, secrets = secrets):
         raise ImproperlyConfigured(error_msg)
 
 SECRET_KEY = get_secret("SECRET_KEY")
-OPEN_AI_KEY = get_secret("OPEN_AI_KEY")
+OPENAI_API_KEY = get_secret("OPENAI_API_KEY")
+NAVER_SHOPPING_API_URL = get_secret("NAVER_SHOPPING_API_URL")
+NAVER_SHOPPING_API_CLIENT_ID = get_secret("NAVER_SHOPPING_API_CLIENT_ID")
+NAVER_SHOPPING_API_CLIENT_SECRET = get_secret("NAVER_SHOPPING_API_CLIENT_SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

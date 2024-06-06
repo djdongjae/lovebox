@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>Result</title>
+{% endblock %}
+
+{% block content %}
+<div class="full-height-container">
+    <div class="container">
+        <h1>🎁 Shopping 🎁</h1>
+        <hr>
+        <div class="item-list">
+            {% for item in items %}
+                <div class="item">
+                    <h2>{{ item.title|safe }}</h2>
+                    <a href="{{ item.link }}" target="_blank">
+                        <img src="{{ item.image }}" alt="{{ item.title|safe }}">
+                    </a>
+                    <p><strong>가격:</strong> {{ item.lprice }}원</p>
+                    <p><strong>판매처:</strong> {{ item.mallName }}</p>
+                    <p><strong>카테고리:</strong> {{ item.category1 }} > {{ item.category2 }} > {{ item.category3 }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        /*background: linear-gradient(to bottom, rgba(255, 129, 86, 0.8), rgba(255, 119, 119, 0.8));*/
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    .full-height-container {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+        background: linear-gradient(to bottom, #FF8156, #FF7777);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        margin: 0px;
+    }
+
+    .lovebox-title {
+        margin-bottom: 20px;
+        color: black;
+    }
+
+    .start-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .start-button:hover {
+        background-color: #0056b3;
+    }
+
+    .item-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        margin: 10px 0;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .item h2 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .item img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .item p {
+        margin: 5px 0;
+    }
+</style>
+{% endblock %}

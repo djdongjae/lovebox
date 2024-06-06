@@ -9,6 +9,7 @@
     <div>
         <h1 class="lovebox-title">🎁{{ item }}🎁</h1>
         {{ description }}
+        <a href="{% url 'shopping' %}?item={{ item }}" class="start-button">상품 보러가기</a>
     </div>
 </div>
 {% endblock %}
