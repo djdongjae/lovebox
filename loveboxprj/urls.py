@@ -23,5 +23,5 @@ urlpatterns = [
     path('', loveboxapp.views.index, name = 'index'),
     path('new/', loveboxapp.views.new, name='new'),
     path('new/create/', loveboxapp.views.create, name='create'),
-    path('result/', loveboxapp.views.result, name='result')
+    path('result', loveboxapp.views.result, name='result')
 ]

@@ -20,7 +20,7 @@ def create(request):
     form.price = request.POST['price']
     form.fashion_style = request.POST['fashion_style']
     form.save()
-    return redirect(f'/result/?form_id={form.id}')
+    return redirect(f'/result?form_id={form.id}')
 
 def result(request):
     id = request.GET.get('form_id')
@@ -70,3 +70,6 @@ def result(request):
             description = line[len('description: '):].strip()
     
     return render(request, 'result.html', {'item': item, 'description': description})
+
+# def shopping(request):
+    
