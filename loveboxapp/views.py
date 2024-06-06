@@ -50,7 +50,7 @@ def result(request):
     questionList = [
         "연인의 성별은 어떻게 되나요?",
         "연인의 MBTI가 무엇인가요?",
-        "예상 선물 가격대는?(단위는 달러)",
+        "예상 선물 가격대는?(단위: 달러)",
         "연인이 선호하는 패션 스타일은?",
         "연인의 취미는 어떤 부류인가요?",
         "연인이 좋아하는 색깔은?",
@@ -69,7 +69,7 @@ def result(request):
     
     reqText += "\ninput: " + questionList[0] + "\noutput: " + form.sex
     reqText += "\ninput: " + questionList[1] + "\noutput: " + form.mbti
-    reqText += "\ninput: " + questionList[2] + "\noutput: " + str(form.price)
+    reqText += "\ninput: " + questionList[2] + "\noutput: " + form.price
     reqText += "\ninput: " + questionList[3] + "\noutput: " + form.fashion_style
     reqText += "\ninput: " + questionList[4] + "\noutput: " + form.hobby
     reqText += "\ninput: " + questionList[5] + "\noutput: " + form.color

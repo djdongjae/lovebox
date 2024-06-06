@@ -5,7 +5,7 @@ class Form(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     sex = models.CharField(max_length=20)
     mbti = models.CharField(max_length=20)
-    price = models.IntegerField
+    price = models.CharField(max_length=20)
     fashion_style = models.CharField(max_length=20)
     hobby = models.CharField(max_length=20)
     color = models.CharField(max_length=20)
