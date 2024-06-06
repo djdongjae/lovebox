@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block content %}
-{{ item }}
-{{ description }}
-<img src="{{ image }}" alt="">
+<div class="container">
+    <div>
+        <h1 class="lovebox-title">🎁{{ item }}🎁</h1>
+        {{ description }}
+    </div>
+</div>
 {% endblock %}

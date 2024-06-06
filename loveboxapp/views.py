@@ -3,8 +3,6 @@ from django.utils import timezone
 from .models import Form
 import openai
 from django.conf import settings
-import requests
-from bs4 import BeautifulSoup
 
 openai.api_key = settings.OPEN_AI_KEY
 
@@ -47,7 +45,7 @@ def result(request):
     reqText += "\n\ninput: 연인에게 선물할 물건명 한가지와 추천한 선물에 대한 설명을 제공한다.\n" + "output:\n"
     
     query = openai.ChatCompletion.create( 
-		model="gpt-4o",
+		model="gpt-3.5-turbo",
 		messages=[
         	{'role':'user','content': reqText}
     	], 
@@ -71,25 +69,4 @@ def result(request):
         elif line.startswith('description: '):
             description = line[len('description: '):].strip()
     
-    image = get_image('선물')
-    
-    return render(request, 'result.html', {'item': item, 'description': description, 'image': image})
-
-def get_image(keyword):
-    request_url = f"https://www.flaticon.com/kr/search?word={keyword}&color=color&shape=outline"
-    response = requests.get(request_url)
-    
-    # try:
-    #     response = requests.get(request_url)
-    #     response.raise_for_status()  # 요청이 성공했는지 확인 (200 OK)
-    # except requests.exceptions.RequestException as e:
-    #     raise RuntimeError(f"Request failed: {e}")
-    
-    soup = BeautifulSoup(response.text, 'html.parser')
-    
-    # 첫 번째 아이콘 항목을 찾고 해당 아이콘의 절대 URL을 반환
-    icon_item = soup.find('li', {"class" :'icon--item'})
-    if icon_item:
-        return icon_item.get('abs:data-png')
-    else:
-        raise RuntimeError("No icon found with the specified keyword.")
+    return render(request, 'result.html', {'item': item, 'description': description})
