@@ -67,7 +67,52 @@
     button:hover {
         background-color: #0056b3;
     }
+    .not-visible {
+        display: none;
+    }
+    .spinner-container {
+        display: none;
+    }
 </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+        const spinnerBox = document.getElementById('spinner-box');
+        const formContainer = document.querySelector('.form-container');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // 기본 폼 제출 방지
+            spinnerBox.style.display = 'block'; // 스피너 표시
+            formContainer.style.display = 'none'; // 폼 숨기기
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    return response.json();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                spinnerBox.style.display = 'none'; // 스피너 숨기기
+                formContainer.style.display = 'block'; // 폼 다시 표시
+            });
+        });
+    });
+</script>
+
+<div id="spinner-box" class="spinner-container text-center mt-3">
+    <div class="spinner-border text-primary" role="status"></div>
+    <h4>ChatGPT가 선물을 추천중입니다...</h4>
+</div>
 
 <div class="form-container">
     <h1>🎁 Form 🎁</h1>

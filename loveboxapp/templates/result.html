@@ -5,6 +5,32 @@
 {% endblock %}
 
 {% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const spinnerBox = $('#spinner-box');
+        const formContainer = $('.form-container');
+
+        $.ajax({
+            type: 'GET',
+            url: '/result',
+            success: function (response) {
+                spinnerBox.addClass('not-visible');
+                formContainer.show();
+                console.log('response', response);
+            },
+            error: function (error) {
+                console.log('error', error);
+                spinnerBox.addClass('not-visible');
+                formContainer.show();
+            }
+        });
+    });
+</script>
+
+<div id="spinner-box" class="text-center mt-3">
+    <div class="spinner-border text-primary" role="status"></div>
+</div>
 <div class="container">
     <div>
         <h1 class="lovebox-title">🎁{{ item }}🎁</h1>
