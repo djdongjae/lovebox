@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Form
+from pyecharts.charts import Bar
+from pyecharts import options as opts
+from pyecharts.charts import Pie
 import openai
 from django.conf import settings
 import requests
+import pandas as pd
+import os
 
 openai.api_key = settings.OPENAI_API_KEY
 naver_shopping_api_URL = settings.NAVER_SHOPPING_API_URL
@@ -102,11 +107,9 @@ def result(request):
     
     lines = response.strip().split('\n')
 
-    # item과 description 초기화
     item = None
     description = None
 
-    # 각 줄을 검사하여 item과 description을 추출
     for line in lines:
         if line.startswith('item: '):
             item = line[len('item: '):].strip()
@@ -125,4 +128,57 @@ def shopping(request):
     items = response.json().get('items', [])
     return render(request, 'shopping.html', {'items': items})
 
+def chooseStat(request):
+    return render(request, 'chooseStat.html')
+
+def statistics(request):
+    forms = Form.objects.all().values()
+    df = pd.DataFrame(forms)
     
+    question = request.GET.get("question")
+    
+    if (question == 'sex-x-fashion-style') :
+        gender_fashion = df.groupby(['sex', 'fashion_style']).size().unstack().fillna(0)
+        graph = (
+            Bar(init_opts=opts.InitOpts(width="100%", height="500px", chart_id="chart"))
+            .add_xaxis(gender_fashion.columns.tolist())
+            .add_yaxis("여성", gender_fashion.loc['여성'].tolist())
+            .add_yaxis("남성", gender_fashion.loc['남성'].tolist())
+        )
+        title = "성별에 따른 패션스타일 분포"
+    elif (question == 'mbti'):
+        mbti_counts = df['mbti'].value_counts().reset_index()
+        mbti_counts.columns = ['mbti', 'count']
+        graph = (
+            Pie(init_opts=opts.InitOpts(width="100%", height="500px", chart_id="mbti_chart"))
+            .add("", [list(z) for z in zip(mbti_counts['mbti'], mbti_counts['count'])], radius=["20%", "60%"],)
+            .set_global_opts(title_opts=opts.TitleOpts(title="MBTI Distribution", subtitle="MBTI 유형별 분포도"),
+                    legend_opts=opts.LegendOpts(pos_bottom="0%",orient="horizontal",))
+            .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"))
+        )
+        title = "MBTI 분포도"
+    elif (question == 'sns-x-travel'):
+        sns_travel = df.groupby(['sns_style', 'travel']).size().unstack().fillna(0)
+        graph = (
+            Bar(init_opts=opts.InitOpts(width="100%", height="500px", chart_id="sns_travel_chart"))
+            .add_xaxis(['관광 추구형', '휴양 추구형'])
+            .add_yaxis("SNS 자주함", sns_travel.loc['새로운 트렌드를 따라가는 것을 즐김'].to_list())
+            .add_yaxis("SNS 안함", sns_travel.loc['SNS를 하지 않거나 정량적으로 사용함'].to_list())
+        )
+        title = "SNS 사용빈도에 따른 여행 스타일"
+    
+    if not os.path.exists(settings.MEDIA_ROOT):
+        os.makedirs(settings.MEDIA_ROOT)
+
+    graph_path = os.path.join(settings.MEDIA_ROOT, 'fashion_style_distribution.html')
+    graph.render(graph_path)
+    
+    with open(graph_path, 'r', encoding='utf-8') as file:
+        graph_html = file.read()
+
+    context = {
+        'title': title,
+        'graph_html': graph_html
+    }
+
+    return render(request, 'statistics.html', context)

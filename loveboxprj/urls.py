@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import loveboxapp.views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +26,10 @@ urlpatterns = [
     path('new/', loveboxapp.views.new, name='new'),
     path('new/create/', loveboxapp.views.create, name='create'),
     path('result', loveboxapp.views.result, name='result'),
-    path('shopping', loveboxapp.views.shopping, name='shopping')
+    path('shopping', loveboxapp.views.shopping, name='shopping'),
+    path('chooseStat', loveboxapp.views.chooseStat, name='chooseStat'),
+    path('statistics', loveboxapp.views.statistics, name='statistics'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

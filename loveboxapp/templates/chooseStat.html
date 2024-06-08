@@ -11,7 +11,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     {% block title %}
-    <title>Index</title>
+    <title>index</title>
     {% endblock %}
     <style>
         html, body {
@@ -106,9 +106,11 @@
     {% block content %}
     <div class="container">
         <div>
-            <h1 class="lovebox-title">🎁 LoveBox! 🎁</h1>
-            내 연인은 어떤 선물을 받고 싶을까?
-            <a href="{% url 'new' %}" class="start-button">시작하기</a>
+            <h1 class="lovebox-title">🎁 Statistics 🎁</h1>
+            보고싶은 통계를 선택하세요
+            <a href="{% url 'statistics' %}?question=mbti" class="start-button">MBTI 분포</a>
+            <a href="{% url 'statistics' %}?question=sex-x-fashion-style" class="start-button">성별에 따른 패션스타일 분포</a>
+            <a href="{% url 'statistics' %}?question=sns-x-travel" class="start-button">SNS 사용 빈도에 따른 여행스타일 분포</a>
         </div>
     </div>
     {% endblock %}
